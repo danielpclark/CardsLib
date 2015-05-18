@@ -3,7 +3,7 @@ require 'minitest_helper'
 describe "Deck" do
 
   let :deck do
-    deck = Deck.new Standard::PLAYING_CARDS, seed: 251553915998611004040618191571517194611
+    deck = Deck.new cards: Standard::PLAYING_CARDS, seed: 251553915998611004040618191571517194611
     
     if RUBY_VERSION =~ /1.9/
       deck.instance_eval {

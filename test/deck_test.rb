@@ -3,7 +3,22 @@ require 'minitest_helper'
 describe "Deck" do
 
   let :deck do
-    Deck.new Standard::PLAYING_CARDS, seed: 251553915998611004040618191571517194611
+    deck = Deck.new Standard::PLAYING_CARDS, seed: 251553915998611004040618191571517194611
+    
+    if RUBY_VERSION =~ /1.9/
+      deck.instance_eval {
+        @cards = [
+          "h9", "s4", "s2", "h2", "s9", "dA", "sK", "c8", "d6",
+          "c4", "sJ", "cJ", "c5", "cT", "cK", "c2", "d4", "h3",
+          "dQ", "hJ", "s3", "h8", "h6", "d2", "dK", "d8", "h5",
+          "s5", "sA", "c3", "s7", "cA", "hA", "d9", "s8", "h4",
+          "sQ", "d5", "hK", "d3", "d7", "hQ", "c6", "dJ", "hT",
+          "s6", "c7", "h7", "cQ", "dT", "c9", "sT"
+        ].map {|c| Card.new(c)}.to_enum
+      }
+    end
+
+    deck
   end
 
   it "Creates a deck" do

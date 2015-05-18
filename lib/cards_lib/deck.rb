@@ -12,17 +12,47 @@ module CardsLib
     end
 
     def peak
-      Array(@cards.to_a[@top..@top]).first
+      Array(_cards[@top..@top]).first
     end
 
     def pluck
-      card = Array(@cards.to_a[@top..@top]).first
-      @top += 1 unless @top == cards.to_a.size
+      card = peak
+      @top += 1 unless @top == _cards.size
       card || card.tap {|i| i.define_singleton_method(:face) { nil } }
     end
 
     def return_card
       @top -= 1 unless @top == 0
+    end
+
+    def empty?
+      !peak
+    end
+
+    def present?
+      !empty?
+    end
+
+    def size
+      if @top <= _cards.size
+        _cards[@top..-1].size
+      else
+        0
+      end
+    end
+
+    def count
+      size
+    end
+
+    def face_up
+      @cards.map(&:face)
+    end
+
+    private
+
+    def _cards
+      @cards.to_a
     end
   end
 end

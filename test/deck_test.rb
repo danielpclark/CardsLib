@@ -66,4 +66,37 @@ describe "Deck" do
     deck.return_card
     deck.peak.face.must_equal "sT"
   end
+
+  it "Knows when the deck is :empty?" do
+    deck.wont_be :empty?
+    52.times { deck.pluck }
+    deck.must_be :empty?
+  end
+
+  it "Knows when cards are :present?" do
+    deck.must_be :present?
+    52.times { deck.pluck }
+    deck.wont_be :present?
+  end
+
+  it "Knows the deck :size" do
+    deck.size.must_equal 52
+    deck.count.must_equal 52
+    deck.pluck
+    deck.size.must_equal 51
+    deck.count.must_equal 51
+    50.times { deck.pluck }
+    deck.size.must_equal 1
+    deck.count.must_equal 1
+    deck.pluck
+    deck.size.must_equal 0
+    deck.count.must_equal 0
+    deck.pluck
+    deck.size.must_equal 0
+    deck.count.must_equal 0
+  end
+
+  it "Can show the cards :face_up" do
+    deck.face_up.take(5).must_equal ["h9", "s4", "s2", "h2", "s9"]
+  end
 end

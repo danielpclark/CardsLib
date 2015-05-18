@@ -4,7 +4,7 @@ $LOAD_PATH.unshift(lib) unless $LOAD_PATH.include?(lib)
 require 'cards_lib/version'
 
 Gem::Specification.new do |spec|
-  spec.name          = "CardsLib"
+  spec.name          = "cards_lib"
   spec.version       = CardsLib::VERSION
   spec.authors       = ["Daniel P. Clark"]
   spec.email         = ["6ftdan@gmail.com"]

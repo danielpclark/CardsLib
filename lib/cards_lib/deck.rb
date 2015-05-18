@@ -9,5 +9,19 @@ module CardsLib
     def cards
       @cards
     end
+
+    def peak
+      @cards.to_a[@top..@top].first
+    end
+
+    def pluck
+      card = @cards.to_a[@top..@top].first
+      @top += 1
+      card
+    end
+
+    def return_card
+      @top -= 1 unless @top == 0
+    end
   end
 end

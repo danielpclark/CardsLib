@@ -10,7 +10,7 @@ describe "Deck" do
     deck.cards.map(&:face).sort.must_equal Standard::PLAYING_CARDS.sort
   end
 
-  it "returns the cards as an enumerator" do
+  it "Returns the cards as an enumerator" do
     deck.is_a? Enumerator
   end
 
@@ -36,5 +36,19 @@ describe "Deck" do
     deck.peak.face.must_equal "s2"
     deck.return_card
     deck.peak.face.must_equal "s4"
+  end
+
+  it "Gets to the last card of the deck just swell" do
+    51.times { deck.pluck }
+    deck.pluck.face.must_equal "sT"
+    card = deck.pluck
+    card.must_be_nil    
+    card.face.must_be_nil
+  end
+
+  it "Doesn't over draw from deck" do
+    55.times { deck.pluck }
+    deck.return_card
+    deck.peak.face.must_equal "sT"
   end
 end

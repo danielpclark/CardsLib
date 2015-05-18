@@ -11,13 +11,13 @@ module CardsLib
     end
 
     def peak
-      @cards.to_a[@top..@top].first
+      Array(@cards.to_a[@top..@top]).first
     end
 
     def pluck
-      card = @cards.to_a[@top..@top].first
-      @top += 1
-      card
+      card = Array(@cards.to_a[@top..@top]).first
+      @top += 1 unless @top == cards.to_a.size
+      card || card.tap {|i| i.define_singleton_method(:face) { nil } }
     end
 
     def return_card

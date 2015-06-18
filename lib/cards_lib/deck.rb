@@ -34,11 +34,7 @@ module CardsLib
     end
 
     def size
-      if @top <= _cards.size
-        _cards[@top..-1].size
-      else
-        0
-      end
+      _cards[@top..-1].size
     end
 
     def count

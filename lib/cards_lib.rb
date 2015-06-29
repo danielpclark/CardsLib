@@ -4,5 +4,4 @@ require "cards_lib/deck"
 require "cards_lib/standard"
 
 module CardsLib
-  # Your code goes here...
 end

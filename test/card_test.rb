@@ -42,4 +42,20 @@ describe "Card" do
       Card.new("#{a}h").must_be :==, Card.new("#{a}h")
     }
   end
+
+  it "Recognizes sequential ranks" do
+    coupler = ->str{
+      arr = []
+      str.length.times {|i|
+        arr.push(str[i..i+1]) unless i == str.length - 1
+      }
+      arr
+    }
+    coupler.("A23456789TJQKQJT98765432A").each do |pair|
+      Card.new("#{pair[0]}h").must_be :sequential, Card.new("#{pair[1]}h")
+    end
+    coupler.("A3579JKAQT8642").each do |pair|
+      Card.new("#{pair[0]}h").wont_be :sequential, Card.new("#{pair[1]}h")
+    end
+  end
 end

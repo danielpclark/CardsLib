@@ -37,34 +37,13 @@ module CardsLib
     def <=>(other)
       @ranker.<=>(other)
     end
+
+    def sequential(other)
+      @ranker.sequential(other)
+    end
   end
 
   class InvalidCardFace < Exception
 
-  end
-
-  class Ranker
-    include Comparable
-    attr :rank, :ranks, :rank_lookup
-    def initialize(
-      rank = nil,
-      ranks: "A23456789TJQK".split(''),
-      rank_lookup: ->rank_face{
-        r = @ranks.index(rank_face).to_i + 1
-        # r = 10 if r > 10
-        r
-      })
-      @rank = rank
-      @ranks = ranks
-      @rank_lookup = rank_lookup
-    end
-
-    def <=>(item)
-      @rank_lookup[self.rank] <=> @rank_lookup[item.rank]
-    end
-
-    def inspect
-      @rank
-    end
   end
 end

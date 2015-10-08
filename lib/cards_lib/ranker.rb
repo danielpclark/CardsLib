@@ -20,5 +20,9 @@ module CardsLib
     def inspect
       @rank
     end
+
+    def sequential(item)
+      (@rank_lookup[self.rank] - @rank_lookup[item.rank]).abs == 1
+    end
   end
 end

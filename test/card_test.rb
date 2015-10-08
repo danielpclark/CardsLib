@@ -20,7 +20,7 @@ describe "Card" do
     card.suit.must_equal "h"
   end
 
-  it "can create cards from rank and suit" do
+  it "Can create cards from rank and suit" do
     card = Card.new({suit: "Hearts", rank: "Jack"})
     card.face.must_equal "Jack of Hearts"
     card.suit.must_equal "Hearts"
@@ -29,5 +29,17 @@ describe "Card" do
     card.face.must_equal "Jh"
     card.suit.must_equal "h"
     card.rank.must_equal "J"
+  end
+
+  it "Knows ranks of cards" do
+    "A23456789TJQK".split('').combination(2).each {|a,b|
+      Card.new("#{a}h").must_be :<, Card.new("#{b}h")
+    }
+    "A23456789TJQK".split('').reverse.combination(2).each {|a,b|
+      Card.new("#{a}h").must_be :>, Card.new("#{b}h")
+    }
+    "A23456789TJQK".split('').each {|a|
+      Card.new("#{a}h").must_be :==, Card.new("#{a}h")
+    }
   end
 end

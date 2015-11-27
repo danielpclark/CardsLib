@@ -62,7 +62,7 @@ module CardsLib
 
     # returns other if true
     def ordered?(other)
-      card.sequential(other) ? other : NilCard.new
+      self.sequential(other) ? other : NilCard.new
     end
   end
 

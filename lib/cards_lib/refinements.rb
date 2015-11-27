@@ -1,7 +1,8 @@
 module CardsLib::Refinements
   module ClassyInject
     refine Array do
-      # Ends quickly on DuckType change
+      # Ends quickly on DuckType change (aka Lazy Typed Injector)
+      # Designed for functional [self,other]->other forwardness
       def inject(m)
         ar = self.dup
         result = ar.shift

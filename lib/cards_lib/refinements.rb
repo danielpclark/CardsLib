@@ -4,15 +4,16 @@ module CardsLib::Refinements
       # Ends quickly on DuckType change (aka Lazy Typed Injector)
       # Designed for functional [self,other]->other forwardness
       def inject(m)
-        ar = self.dup
-        result = ar.shift
-        brk = false
+        result, *array = self.dup
+        stop_iteration = false
+
         loop do
-          break if ar.empty?
-          other = ar.shift
-          brk = result.class != other.class
+          break if array.empty?
+          other = array.shift
+          stop_iteration = result.class != other.class
+
           result = result.send(m, other)
-          break if brk
+          break if stop_iteration
         end
         result
       end

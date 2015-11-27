@@ -12,6 +12,8 @@ module CardsLib
         cards.combination(2).all? {|a,b| a != b }
       end
 
+      using Refinements::ClassyInject
+
       def paired(cards)
         !(cards.inject(:paired?).is_a? NilCard)
       end

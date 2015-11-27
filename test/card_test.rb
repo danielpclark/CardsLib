@@ -20,6 +20,13 @@ describe "Card" do
     card.suit.must_equal "h"
   end
 
+  it "Knows samesness :==" do
+    card1 = Card.new("Ah")
+    card2 = Card.new("Ah")
+
+    _(card1).must_equal card2
+  end
+
   it "Can create cards from rank and suit" do
     card = Card.new({suit: "Hearts", rank: "Jack"})
     card.face.must_equal "Jack of Hearts"

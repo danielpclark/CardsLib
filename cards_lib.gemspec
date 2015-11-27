@@ -21,9 +21,9 @@ Gem::Specification.new do |spec|
 
   spec.required_ruby_version = '>= 1.9.1'
 
-  spec.add_development_dependency "bundler", "~> 1.9"
-  spec.add_development_dependency "rake", "~> 10.0"
-  spec.add_development_dependency "color_pound_spec_reporter", "~> 0.0.4"
-  spec.add_development_dependency "minitest", "~> 5.5.1"
-  spec.add_development_dependency "minitest-reporters", "~> 1.0.0"
+  spec.add_development_dependency "bundler", "~> 1.10.6"
+  spec.add_development_dependency "rake", "~> 10.4"
+  spec.add_development_dependency "color_pound_spec_reporter", "~> 0.0.5"
+  spec.add_development_dependency "minitest", "~> 5.8.1"
+  spec.add_development_dependency "minitest-reporters", "~> 1.1.4"
 end

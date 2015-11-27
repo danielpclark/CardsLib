@@ -34,6 +34,14 @@ module CardsLib
       @rank || @face[0]
     end
 
+    def pair?(other)
+      self.rank == other.rank
+    end
+
+    def ==(other)
+      pair?(other) && self.suit == other.suit
+    end
+
     def <=>(other)
       @ranker.<=>(other)
     end
@@ -41,9 +49,30 @@ module CardsLib
     def sequential(other)
       @ranker.sequential(other)
     end
+    
+    # return other if true
+    def paired?(other)
+      (self.rank == other.rank) ? other : NilCard.new
+    end
+
+    # return other if true
+    def suited?(other)
+      (self.suit == other.suit) ? other : NilCard.new
+    end
+
+    # returns other if true
+    def ordered?(other)
+      self.sequential(other) ? other : NilCard.new
+    end
   end
 
   class InvalidCardFace < Exception
 
+  end
+
+  class NilCard
+    def method_missing(m,*a,&b)
+      self 
+    end
   end
 end

@@ -12,18 +12,18 @@ module CardsLib
         cards.combination(2).all? {|a,b| a != b }
       end
 
-      using Refinements::ClassyInject
+      using Refinements::InjectWhile
 
       def paired(cards)
-        !(cards.inject(:paired?).is_a? NilCard)
+        cards.inject_while?(:paired?)
       end
       
       def suited(cards)
-        !(cards.inject(:suited?).is_a? NilCard)
+        cards.inject_while?(:suited?)
       end
 
       def ordered(cards)
-        !(cards.sort.inject(:ordered?).is_a? NilCard)
+        cards.sort.inject_while?(:ordered?)
       end
     end
   end

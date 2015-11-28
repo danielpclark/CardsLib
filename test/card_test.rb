@@ -59,10 +59,10 @@ describe "Card" do
       arr
     }
     coupler.("A23456789TJQKQJT98765432A").each do |pair|
-      Card.new("#{pair[0]}h").must_be :sequential, Card.new("#{pair[1]}h")
+      Card.new("#{pair[0]}h").must_be :sequential?, Card.new("#{pair[1]}h")
     end
     coupler.("A3579JKAQT8642").each do |pair|
-      Card.new("#{pair[0]}h").wont_be :sequential, Card.new("#{pair[1]}h")
+      Card.new("#{pair[0]}h").wont_be :sequential?, Card.new("#{pair[1]}h")
     end
   end
 end

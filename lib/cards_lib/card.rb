@@ -2,23 +2,12 @@ module CardsLib
   class Card
     include Comparable
     def initialize(face, ranker = Ranker)
-      raise InvalidCardFace, "face cannot be blank" if face.to_s.empty?
-      @suit = nil
-      @rank = nil
-      @ranker = ranker
-      if face.is_a? Hash
-        @suit = face.fetch(:suit) { nil }
-        @rank = face.fetch(:rank) { nil }
-        if @rank && @suit
-          str = ""
-          if @rank.length.>(1) && @suit.length.>(1)
-            str = " of "
-          end
-          @face = [@rank, str, @suit].join
-        end
-      else
-        @face = face
-      end
+      raise InvalidCardFace, "Parameter face cannot be blank!" if face.to_s.empty?
+      @suit = if_hash_then_fetch(face, :suit)
+      @rank = if_hash_then_fetch(face, :rank)
+      @face = face_from_rank_and_suit(@rank, @suit) if @rank && @suit
+      
+      @face ||= face
       @ranker = ranker.new(rank)
     end
 
@@ -46,33 +35,39 @@ module CardsLib
       @ranker.<=>(other)
     end
 
-    def sequential(other)
-      @ranker.sequential(other)
+    def sequential?(other)
+      @ranker.sequential?(other)
     end
     
     # return other if true
     def paired?(other)
-      (self.rank == other.rank) ? other : NilCard.new
+      (self.rank == other.rank) ? other : nil
     end
 
     # return other if true
     def suited?(other)
-      (self.suit == other.suit) ? other : NilCard.new
+      (self.suit == other.suit) ? other : nil
     end
 
     # returns other if true
     def ordered?(other)
-      self.sequential(other) ? other : NilCard.new
+      self.sequential?(other) ? other : nil
     end
   end
 
-  class InvalidCardFace < Exception
+  class InvalidCardFace < Exception; end
+  class InvalidRankAndSuitProvided < Exception; end
 
+  private
+  def face_from_rank_and_suit(rank, suit)
+    if rank && suit
+      [rank, ((rank.length.>(1) && suit.length.>(1)) ? " of " : ""), suit].join
+    else
+      raise InvalidRankAndSuitProvided, "Suit and Rank provided in Hash are invalid!"
+    end
   end
 
-  class NilCard
-    def method_missing(m,*a,&b)
-      self 
-    end
+  def if_hash_then_fetch(item, target)
+    item.is_a?(Hash) ? item.fetch(target) { nil } : nil
   end
 end

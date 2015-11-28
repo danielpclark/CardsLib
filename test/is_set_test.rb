@@ -7,6 +7,11 @@ describe "Set Evaluator" do
     refute IsSet.verify(Cards["Ah","2h","Ad"])
   end
 
+  it "Knows sequential cards are only 1 step from each other" do
+    refute IsSet.verify(Cards["As","3s","5s","7s","9s"], [:unique, :suited, :ordered])
+    assert IsSet.verify(Cards["As","2s","3s","4s","5s"], [:unique, :suited, :ordered])
+  end
+
   it "Confirms set of 5 ordered spades" do
     assert IsSet.verify(Cards["As","2s","3s","4s","5s"], [:unique, :suited, :ordered])
     refute IsSet.verify(Cards["As","2s","Qs","4s","5s"], [:unique, :suited, :ordered])

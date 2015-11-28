@@ -17,13 +17,14 @@ Create a Card with Card.new(face)
 CardsLib::Card.new("As")
 ```
 
-Use a Macro to create a list of card faces represented by strings into a list of Card instances.
+Use a Macro to create a list of Card instances from card faces.
 
 ```ruby
 CardsLib::Cards["Ah","2h","3h","4h","5h"]
 ```
 
-Create a Deck with Deck.new(cards) ... A default deck is generated if no parameters are given.
+Create a Deck with Deck.new(cards)
+A default deck is generated if no parameters are given.
 
 ```ruby
 CardsLib::Deck.new
@@ -32,12 +33,13 @@ CardsLib::Deck.new
 Pick what rules you'd like to use in determining a set of cards.
 
 ```ruby
-# returns either true or false
+# BOOLEAN RESULT
 CardsLib::IsSet.verify(
   card_instances_array,
   rules = [:unique, :ordered, :paired, :suited],
   specifications = {min: 3, max: Float::INFINITY}
 )
+```
 
 ##License
 

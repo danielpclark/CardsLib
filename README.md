@@ -41,6 +41,12 @@ CardsLib::IsSet.verify(
 )
 ```
 
+##Goodies
+
+* lib/cards_lib/is_set.rb is a golden tool in card hand verification.
+* In lib/cards_lib/standard.rb there are some basic deck templates.
+* In lib/cards_lib/standard/rules/poker.rb there are some working Poker hand verification methods.
+
 ##License
 
 The MIT License (MIT)

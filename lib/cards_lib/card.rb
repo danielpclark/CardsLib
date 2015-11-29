@@ -53,21 +53,22 @@ module CardsLib
     def ordered?(other)
       self.sequential?(other) ? other : nil
     end
+
+    private
+    def face_from_rank_and_suit(rank, suit)
+      if rank && suit
+        [rank, ((rank.length.>(1) && suit.length.>(1)) ? " of " : ""), suit].join
+      else
+        raise InvalidRankAndSuit, "Suit and Rank provided in Hash are invalid!"
+      end
+    end
+
+    def if_hash_then_fetch(item, target)
+      item.is_a?(Hash) ? item.fetch(target) { nil } : nil
+    end
+
   end
 
   class InvalidCardFace < Exception; end
   class InvalidRankAndSuit < Exception; end
-
-  private
-  def face_from_rank_and_suit(rank, suit)
-    if rank && suit
-      [rank, ((rank.length.>(1) && suit.length.>(1)) ? " of " : ""), suit].join
-    else
-      raise InvalidRankAndSuit, "Suit and Rank provided in Hash are invalid!"
-    end
-  end
-
-  def if_hash_then_fetch(item, target)
-    item.is_a?(Hash) ? item.fetch(target) { nil } : nil
-  end
 end

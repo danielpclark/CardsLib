@@ -7,9 +7,8 @@ module CardsLib::Refinements
           break if array.empty?
           other = array.shift
 
-          return false if result.class != other.class
-
           result = result.send(m, other)
+          return false unless result
         end
         true
       end

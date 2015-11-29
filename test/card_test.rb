@@ -9,6 +9,10 @@ describe "Card" do
   it "Must raise InvalidCardFace for empty string" do
     -> { Card.new("") }.must_raise InvalidCardFace
   end
+  
+  it "Must raise InvalidSuitAndRank for empty Hash" do
+    -> { Card.new({}) }.must_raise InvalidRankAndSuit
+  end
 
   it "Knows its rank" do
     card = Card.new("Ah")

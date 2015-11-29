@@ -5,7 +5,7 @@ module CardsLib
       raise InvalidCardFace, "Parameter face cannot be blank!" if face.to_s.empty?
       @suit = if_hash_then_fetch(face, :suit)
       @rank = if_hash_then_fetch(face, :rank)
-      @face = face_from_rank_and_suit(@rank, @suit) if @rank && @suit
+      @face = face_from_rank_and_suit(@rank, @suit) if face.is_a? Hash
       
       @face ||= face
       @ranker = ranker.new(rank)
@@ -56,14 +56,14 @@ module CardsLib
   end
 
   class InvalidCardFace < Exception; end
-  class InvalidRankAndSuitProvided < Exception; end
+  class InvalidRankAndSuit < Exception; end
 
   private
   def face_from_rank_and_suit(rank, suit)
     if rank && suit
       [rank, ((rank.length.>(1) && suit.length.>(1)) ? " of " : ""), suit].join
     else
-      raise InvalidRankAndSuitProvided, "Suit and Rank provided in Hash are invalid!"
+      raise InvalidRankAndSuit, "Suit and Rank provided in Hash are invalid!"
     end
   end
 

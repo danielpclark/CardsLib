@@ -2,6 +2,20 @@
 
 [![Gem Version](https://badge.fury.io/rb/cards_lib.svg)](http://badge.fury.io/rb/cards_lib)[![Build Status](https://travis-ci.org/danielpclark/CardsLib.svg?branch=master)](https://travis-ci.org/danielpclark/CardsLib)[![Code Climate](https://codeclimate.com/github/danielpclark/CardsLib/badges/gpa.svg)](https://codeclimate.com/github/danielpclark/CardsLib)[![Test Coverage](https://codeclimate.com/github/danielpclark/CardsLib/badges/coverage.svg)](https://codeclimate.com/github/danielpclark/CardsLib/coverage)
 
+I apply best practices in designing this gem and each feature has had
+a LOT of thought put into it. Just look at how the Deck works. It's
+designed with an immutable deck to draw from or return cards to. You
+can even seed it to write robust tests and get the same results time
+after time. Card evaluation is written in a functional way that
+allows, and is optimized for, lazy evaluation. The set verification
+is as simple as handing it some cards and the names of the rules to
+apply.
+
+I'm willing to bet you that there is no other Ruby card game library
+out there as easy to use, as well thought out, and as simple to
+understand as mine. Come on, I dare you to use it and review it! ;-)
+
+
 ##Install
 
 ```

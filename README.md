@@ -15,6 +15,15 @@ I'm willing to bet you that there is no other Ruby card game library
 out there as easy to use, as well thought out, and as simple to
 understand as mine. Come on, I dare you to use it and review it! ;-)
 
+##Scope
+
+The scope of this project aims to be a game agnostic card management
+and evaluation system.  Game logic itself will not be provided with
+this library.  The creation, grouping, comparison, and evaluation of
+cards is the sole purpose of this gem.
+
+Feel free to contribute or raise suggestions via the issue tracker.
+I welcome participation of all kinds! :-)
 
 ##Install
 

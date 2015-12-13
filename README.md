@@ -80,7 +80,7 @@ The main difference between **Rules** and **Evaluators** is Rules are purposed
 for exact precedence and exact given matches (eg: two_pair only accepts
 4 cards).  An Evaluator can take all cards in a "Hand" *(Hand is not yet
 defined in specification or implementation)* and give a complete evaluation
-of the hands worth.  To make a PokerEvaluator for two_pair; one way you
+of the hands worth.  To make a PokerEvaluator work for two_pair; one way you
 could implement it is with
 
 ```ruby
@@ -98,7 +98,7 @@ But that's pretty mutch the gist of it.  The Evaluators can give the
 entire hand evaluation where-as Rules are specific scenarios.
 
 **Ranker** is a card evaluation object that is passed into a Card when
-the Card(s) are first initialized.  Each Card holds its own Ranker
+the Cards are first initialized.  Each Card holds its own Ranker
 Object.
 
 ##License

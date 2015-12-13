@@ -19,6 +19,10 @@ guard :minitest do
   # with Minitest::Unit
   watch(%r{^test/(.*)\/?(.*)_test\.rb$})
   watch(%r{^lib/cards_lib/([^/]+)\.rb$})     { |m| "test/#{m[1]}_test.rb" }
+  watch(%r{^lib/cards_lib/standard/([^/]+)\.rb$})     { |m| "test/standard/#{m[1]}_test.rb" }
+  watch(%r{^lib/cards_lib/standard/evaluators/([^/]+)\.rb$})     { |m| "test/standard/evaluators/#{m[1]}_test.rb" }
+  watch(%r{^lib/cards_lib/standard/rules/([^/]+)\.rb$})     { |m| "test/standard/rules/#{m[1]}_test.rb" }
+  watch(%r{^lib/cards_lib/standard/rankers/([^/]+)\.rb$})     { |m| "test/standard/rankers/#{m[1]}_test.rb" }
   watch(%r{^test/minitest_helper\.rb$})      { 'test' }
   watch(%r{^lib/cards_lib/card.rb$})         { 'test' }
 

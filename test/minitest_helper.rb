@@ -5,6 +5,7 @@ require 'cards_lib'
 require 'minitest/autorun'
 require 'minitest/reporters'
 require 'color_pound_spec_reporter'
+require 'minitest/byebug' if ENV["DEBUG"]
 
 Minitest.backtrace_filter = Minitest::BacktraceFilter.new
 

@@ -1,4 +1,6 @@
 require_relative 'standard/rules'
+require_relative 'standard/rankers'
+require_relative 'standard/evaluators'
 
 module CardsLib
   module Standard

@@ -1,7 +1,7 @@
 module CardsLib
   module Standard
     module Rules
-      module Poker
+      module PokerRule
         def self.precedence
           [
             :royal_flush, :straight_flush, :four_of_a_kind,

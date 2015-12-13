@@ -1,6 +1,7 @@
+.byebug_history
 .idea
 .idea/*
-*.swp
+**/*.swp
 *.gem
 /.bundle/
 /.yardoc

@@ -8,7 +8,7 @@ module CardsLib
       @face = face_from_rank_and_suit(@rank, @suit) if face.is_a? Hash
       
       @face ||= face
-      @ranker = ranker.new(rank)
+      @ranker = ranker.new(self.rank)
     end
 
     def face
@@ -23,12 +23,22 @@ module CardsLib
       @rank || @face[0]
     end
 
+    def value
+      @ranker.ranker
+    end
+
     def pair?(other)
       self.rank == other.rank
     end
 
+    # equal by both rank and suit
     def ==(other)
       pair?(other) && self.suit == other.suit
+    end
+
+    # equal by value
+    def eql?(other)
+      value == other.value
     end
 
     def <=>(other)

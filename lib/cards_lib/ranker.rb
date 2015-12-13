@@ -2,7 +2,7 @@ module CardsLib
   class Ranker
     include Comparable
     attr :rank, :rank_lookup
-    def initialize rank = nil, ranks: nil, rank_lookup: nil
+    def initialize(rank = nil, ranks = nil, rank_lookup = nil)
       @rank, @ranks, @rank_lookup = rank, ranks, rank_lookup
     end
 
@@ -10,7 +10,7 @@ module CardsLib
       @ranks || Standard::RANKS
     end
 
-    def ranker(rank_face)
+    def ranker(rank_face = @rank)
       @rank_lookup ? @rank_lookup.(rank_face) :
       ranks.index(rank_face).to_i + 1
     end

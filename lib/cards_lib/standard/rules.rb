@@ -1,4 +1,4 @@
-require_relative 'rules/poker.rb'
+require_relative 'rules/poker_rule'
 
 module CardsLib
   module Standard

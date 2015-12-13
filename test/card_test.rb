@@ -19,6 +19,11 @@ describe "Card" do
     card.rank.must_equal "A"
   end
 
+  it "Knows its value" do
+    card = Card.new("4h")
+    card.value.must_equal 4
+  end
+
   it "Knows its suit" do
     card = Card.new("Ah")
     card.suit.must_equal "h"

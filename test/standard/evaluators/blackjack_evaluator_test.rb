@@ -32,6 +32,10 @@ describe BlackjackEvaluator do
     _(BlackjackEvaluator.new(
       BlackCards["As","Ah","Ac","Ad","Kd"]
     ).worth).must_equal 14
+
+    _(BlackjackEvaluator.new(
+      BlackCards["As","Ah","Ac","Ad","Kd","Qh"]
+    ).worth).must_equal 24
   end
 
 end

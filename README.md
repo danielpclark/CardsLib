@@ -91,7 +91,7 @@ but this is a very inefficient way to implement this.  Perhaps a more
 efficient way would be to use groupings
 
 ```ruby
-hand.group_by(&:rank).keep_if {|group| group.length == 2}.count == 2
+hand.partition(&:rank).keep_if {|group| group.length == 2}.count == 2
 ```
 
 But that's pretty mutch the gist of it.  The Evaluators can give the
@@ -99,7 +99,7 @@ entire hand evaluation where-as Rules are specific scenarios.
 
 **Ranker** is a card evaluation object that is passed into a Card when
 the Cards are first initialized.  Each Card holds its own Ranker
-Object.
+object.
 
 ##License
 

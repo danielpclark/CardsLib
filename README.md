@@ -70,7 +70,9 @@ CardsLib::IsSet.verify(
 
 * In **lib/cards_lib/standard.rb** there are some basic deck templates.
 
-* In **lib/cards_lib/standard/rules/poker.rb** there are some working Poker hand verification methods.
+* In **lib/cards_lib/standard/rules/poker_rule.rb** there are some working Poker hand verification methods.
+
+* In **lib/cards_lib/standard/evaluators/blackjack_evaluator.rb** there is a Blackjack hand worth evaluation tool.  See the **test/standard/evaluators/blackjack_evaluator_test.rb** for examples.
 
 ##License
 

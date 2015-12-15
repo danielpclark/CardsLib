@@ -91,7 +91,7 @@ but this is a very inefficient way to implement this.  Perhaps a more
 efficient way would be to use groupings
 
 ```ruby
-hand.partition(&:rank).count {|group| group.length == 2} > 1
+hand.group_by(&:rank).values.count {|group| group.length == 2} > 1
 ```
 
 But that's pretty mutch the gist of it.  The Evaluators can give the

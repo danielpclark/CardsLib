@@ -11,6 +11,10 @@ module CardsLib
       @ranker = ranker.new(self.rank)
     end
 
+    def inspect
+      "(Card)"
+    end
+
     def face
       @face   
     end

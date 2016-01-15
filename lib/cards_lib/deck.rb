@@ -7,6 +7,10 @@ module CardsLib
       @cards = cards.map {|c| Card.new(c) }.shuffle(random: Random.new(@seed)).to_enum
     end
 
+    def inspect
+      "<Deck: #{size} Cards - Seed##{@seed}>"
+    end
+
     def cards
       @cards
     end

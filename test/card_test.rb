@@ -4,6 +4,7 @@ describe "Card" do
   it "Creates a Card" do
     card = Card.new("Ah")
     card.face.must_equal "Ah"
+    _(card.inspect).must_equal "(Card)"
   end
 
   it "Must raise InvalidCardFace for empty string" do

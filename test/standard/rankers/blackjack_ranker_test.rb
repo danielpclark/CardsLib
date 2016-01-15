@@ -1,8 +1,5 @@
 require 'minitest_helper'
-
 include CardsLib::Standard::Rankers
-
-BlackCards = ->*c{ c.map {|face| Card.new(face, CardsLib::Standard::Rankers::BlackjackRanker) }}
 
 describe BlackjackRanker do
   let(:cards) { BlackCards["2s","3s","4s"] }

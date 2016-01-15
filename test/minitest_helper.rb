@@ -14,3 +14,4 @@ Dir["#{File.dirname(__FILE__)}/support/**/*.rb"].each { |f| require f }
 Minitest::Reporters.use! [ColorPoundSpecReporter.new]
 
 include CardsLib
+BlackCards = ->*c{ c.map {|face| Card.new(face, CardsLib::Standard::Rankers::BlackjackRanker) }}

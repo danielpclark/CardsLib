@@ -23,6 +23,7 @@ describe "Deck" do
 
   it "Creates a deck" do
     deck.cards.map(&:face).sort.must_equal Standard::PLAYING_CARDS.sort
+    _(deck.inspect).must_equal "<Deck: 52 Cards - Seed#251553915998611004040618191571517194611>"
   end
 
   it "Returns the cards as an enumerator" do

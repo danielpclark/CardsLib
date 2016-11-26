@@ -2,6 +2,10 @@ module CardsLib
   class Ranker
     include Comparable
     attr :rank, :rank_lookup
+    # Initialize's arguments:
+    # rank        - is whatever part of the object, or the object itself you choose to use.
+    # ranks       - is a simple hash to lookup a cards value with the keys matching the rank object.
+    # rank_lookup - is an optional Proc to redefine how you will lookup a cards value.
     def initialize(rank = nil, ranks = nil, rank_lookup = nil)
       @rank, @ranks, @rank_lookup = rank, ranks, rank_lookup
     end

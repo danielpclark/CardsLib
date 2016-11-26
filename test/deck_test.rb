@@ -4,7 +4,7 @@ describe "Deck" do
 
   let :deck do
     deck = Deck.new cards: Standard::PLAYING_CARDS, seed: 251553915998611004040618191571517194611
-    
+
     if RUBY_VERSION =~ /1.9/
       deck.instance_eval {
         @cards = [
@@ -99,5 +99,56 @@ describe "Deck" do
 
   it "Can show the cards :face_up" do
     deck.face_up.take(5).must_equal ["9h", "Jh", "Jc", "7s", "Qs"]
+  end
+
+  it "Takes a custom Ranker for each Card" do
+    class CustomRanker < CardsLib::Ranker
+      def initialize(card)
+        super(
+          card,
+          {
+            "A" => 1,
+            "2" => 2,
+            "3" => 3,
+            "4" => 4,
+            "5" => 5,
+            "6" => 6,
+            "7" => 7,
+            "8" => 8,
+            "9" => 9,
+            "T" => 10,
+            "J" => 11,
+            "Q" => 12,
+            "K" => 13
+          },
+          ->rank{@ranks[rank]}
+        )
+      end
+    end
+    custom = Deck.new cards: Standard::PLAYING_CARDS,
+      seed: 251553915998611004040618191571517194611,
+      ranker: CustomRanker
+    a = custom.pluck
+    _(a.value).must_equal 9
+    b = custom.pluck
+    _(b).must_be :>, a # J > 9
+    _(b.value).must_equal 11
+    c = custom.pluck
+    _(c).must_be :eql?, b # J == J
+    _(c).must_be :>=, b # J == J
+    _(c).must_be :<=, b # J == J
+    _(c.value).must_equal 11
+    
+    # EXEPTION ON EQUALITY IMPLEMENTATION ON Card CLASS.
+    # DON'T USE == FOR ONLY CHECKING THE VALUE.
+    # USE :eql?
+    _(c).wont_equal b
+
+    d = custom.pluck
+    _(d).must_be :<, c # 7 < J
+    _(d.value).must_equal 7
+    e = custom.pluck
+    _(e).must_be :>, d # Q > 7
+    _(e.value).must_equal 12
   end
 end

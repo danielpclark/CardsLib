@@ -101,6 +101,52 @@ entire hand evaluation where-as Rules are specific scenarios.
 the Cards are first initialized.  Each Card holds its own Ranker
 object.
 
+#Example Usage
+
+###High Card
+
+```ruby
+include CardsLib
+class CardRanks < Ranker
+  def initialize(card)
+    super(
+      card,
+      "23456789TJQKA".chars
+    )
+  end
+end
+
+deck = Deck.new ranker: CardRanks
+# => <Deck: 52 Cards - Seed#317847827465261913302134114334103894430>
+
+first_card = deck.pluck
+# => (Card)
+first_card.face
+# => "Th"
+second_card = deck.pluck
+# => (Card)
+second_card.face
+# => "6h"
+
+case [first_card.value, second_card.value].max
+  when ->_{first_card.eql? second_card}
+    puts "It's a tie!"
+  when first_card.value
+    puts "First player wins!"
+  when second_card.value
+    puts "Second player wins!"
+  else
+    raise "There was a problem determining a winner"
+  end
+end
+# First player wins!
+```
+
+The example above shows the shorthand way of creating a Ranker object with passing the ranks
+as a simple list from least to greatest value.  If you want to use a Hash (in case some cards
+of different ranks may be the same value) you may, but you must then also define a Proc for
+lookup.  See [lib/cards_lib/standard/rankers/blackjack_ranker.rb](https://github.com/danielpclark/CardsLib/blob/master/lib/cards_lib/standard/rankers/blackjack_ranker.rb) for an example of how to implement that.
+
 ##License
 
 The MIT License (MIT)

@@ -109,10 +109,7 @@ object.
 include CardsLib
 class CardRanks < Ranker
   def initialize(card)
-    super(
-      card,
-      "23456789TJQKA".chars
-    )
+    super card, "23456789TJQKA".chars
   end
 end
 

@@ -12,5 +12,5 @@ module CardsLib
   # Cards[]
   #  generate Card instances from string
   #  representations of their faces
-  Cards = ->*c{ c.map {|*opts| Card.new(*opts)} }
+  Cards = ->*c{ c.map {|*opts| Card.new(*opts.flatten)} }
 end

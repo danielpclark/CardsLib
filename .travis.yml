@@ -1,8 +1,13 @@
 language: ruby
 rvm:
-- 2.2.5
-- 2.3.2
-script: bundle exec rake test
+- 2.2.6
+- 2.3.3
 env:
   global:
     secure: kAw1KW3iTB3rqMur/U1RM7C/MTWJx17T6Xyc+NEcrvE0PtYuIAOfZ/Qn262PWEE34OHCdmkhfHbBY1ZbzwaVDg+5LTlnwikLREMYH5ddf+yLE39lZkoALQDQeNwXNdJG/s/tS2I7c+/+vE8Xk5fZJZmNxiZIFPuFseZUvruO8HnvRpLKdlb7HLJAXq1ITRBWYbCe2jkFhgYEQCBqs3gwIPeAoxXAOn3ILUJ3xDxC/G/eSU+GbLTraJIyrhJApsUw4xSWr+fFumYFRK/PnJlcx4FR64D49B2mEdRSmHvZcBPo0KUWwr+1CVhkPtsTgnO8OJsFkq6FYH1aTmP/5W46wnOe8rPHd1GsY6pgXYTiMisTXk5gLUmcdSWriqbIdeTaBdNDKYzejwRwitR9iPSb1iQXjoCRRvcS1G6dHVjrZq9SSkScpSqJAXvAgr2DeCCY9PejaXdVtyTyOvZYH2ql440+DoEkb4nK9mkhy93CmzoIHNFKWYqNKPCTpK2O7YdL9+wPFc8Kmaobu6Iht9hA0uShLooiF0SnnU0twcEWbVepU9tx5pI65DT46M3PGfLO0KQtXUZscytkstdXmwyWwzFPUMW2EXFeXVW3f9o77z5npe/5b6nBeHIrHTNOdw57fMPzKjmsv0v6EbeVL9xajdHkbJ9G9zOSJd0b+PIPfJc=
+addons:
+  code_climate:
+    repo_token: ecf8c246bcc2fdad42590f78c7b214bc19abf212eee0979427477e9c6a510320
+script: bundle exec rake test
+after_success:
+  - bundle exec codeclimate-test-reporter

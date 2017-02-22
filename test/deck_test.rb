@@ -3,10 +3,10 @@ require 'minitest_helper'
 describe "Deck" do
 
   let :deck do
-    deck = Deck.new cards: Standard::PLAYING_CARDS, seed: 251553915998611004040618191571517194611
+    deck = Deck.new cards: Standard::PLAYING_CARDS, seed: 251_553_915_998_611_004_040_618_191_571_517_194_611
 
     if RUBY_VERSION =~ /1.9/
-      deck.instance_eval {
+      deck.instance_eval do
         @cards = [
           "9h", "Jh", "Jc", "7s", "Qs", "4d", "Ks", "2s", "5h",
           "As", "Kd", "3h", "2c", "3d", "4c", "Ad", "5c", "8c",
@@ -15,7 +15,7 @@ describe "Deck" do
           "Kh", "5d", "Th", "4s", "5s", "Td", "2d", "6s", "9s",
           "Qc", "2h", "9c", "3s", "6h", "3c", "Kc"
         ]
-      }
+      end
     end
 
     deck
@@ -58,7 +58,7 @@ describe "Deck" do
     51.times { deck.pluck }
     deck.pluck.face.must_equal "Kc"
     card = deck.pluck
-    card.must_be_nil    
+    card.must_be_nil
     card.face.must_be_nil
   end
 
@@ -126,8 +126,8 @@ describe "Deck" do
       end
     end
     custom = Deck.new cards: Standard::PLAYING_CARDS,
-      seed: 251553915998611004040618191571517194611,
-      ranker: CustomRanker
+                      seed: 251_553_915_998_611_004_040_618_191_571_517_194_611,
+                      ranker: CustomRanker
     a = custom.pluck
     _(a.value).must_equal 9
     b = custom.pluck
@@ -138,7 +138,7 @@ describe "Deck" do
     _(c).must_be :>=, b # J == J
     _(c).must_be :<=, b # J == J
     _(c.value).must_equal 11
-    
+
     # EXEPTION ON EQUALITY IMPLEMENTATION ON Card CLASS.
     # DON'T USE == FOR ONLY CHECKING THE VALUE.
     # USE :eql?

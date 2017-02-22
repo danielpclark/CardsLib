@@ -2,7 +2,7 @@ module CardsLib::Refinements
   module InjectWhile
     refine Array do
       def inject_while?(m)
-        result, *array = self.dup
+        result, *array = dup
         loop do
           break if array.empty?
           other = array.shift

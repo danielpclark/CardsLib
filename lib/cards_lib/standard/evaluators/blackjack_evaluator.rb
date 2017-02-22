@@ -6,15 +6,13 @@ module CardsLib
           @cards = cards
           @reduced_ace_count = 0
         end
-        
+
         def worth
           @worth ||= @cards.map(&:value).inject(:+)
           if @worth > 21
             attempt = reduce_by_ace
-            until @worth < 22 || !attempt
-              attempt = reduce_by_ace
-            end
-          end 
+            attempt = reduce_by_ace until @worth < 22 || !attempt
+          end
           @worth
         end
 

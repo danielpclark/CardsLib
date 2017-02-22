@@ -10,7 +10,7 @@ module CardsLib
             :high_card
           ]
         end
-        
+
         def self.royal_flush(cards)
           cards if IsSet.verify(cards, [:suited]) && straight_to_ace(cards)
         end
@@ -18,16 +18,16 @@ module CardsLib
         def self.straight_flush(cards)
           cards if IsSet.verify(cards, [:unique, :ordered, :suited], {min: 5, max: 5})
         end
-        
+
         def self.four_of_a_kind(cards)
           cards if IsSet.verify(cards, [:unique, :paired], {min: 4, max: 4})
         end
-        
+
         def self.full_house(cards)
           pair, set = cards.group_by(&:rank).values.sort
-          cards if pair.inject(:pair?) && IsSet.verify(set, [:unique, :paired], {min:3, max: 3})
+          cards if pair.inject(:pair?) && IsSet.verify(set, [:unique, :paired], {min: 3, max: 3})
         end
-        
+
         def self.flush(cards)
           cards if IsSet.verify(cards, [:unique, :suited], {min: 5, max: 5})
         end
@@ -38,7 +38,7 @@ module CardsLib
         end
 
         def self.three_of_a_kind(cards)
-          cards if IsSet.verify(cards, [:unique, :paired], {min:3, max: 3})
+          cards if IsSet.verify(cards, [:unique, :paired], {min: 3, max: 3})
         end
 
         def self.two_pair(cards)
@@ -47,16 +47,16 @@ module CardsLib
         end
 
         def self.one_pair(cards)
-          cards if IsSet.verify(cards, [:unique, :paired], {min:2, max: 2})
+          cards if IsSet.verify(cards, [:unique, :paired], {min: 2, max: 2})
         end
 
         def self.high_card(cards)
           cards.detect {|c| c.rank[/\AA/]} || cards.sort.pop
         end
 
-        class << self 
+        class << self
           def straight_to_ace(cards)
-            cards.sort.map(&:rank) == Cards[*%w[As Ks Qs Js Ts]].sort.map(&:rank)
+            cards.sort.map(&:rank) == Cards[*%w(As Ks Qs Js Ts)].sort.map(&:rank)
           end
           private :straight_to_ace
         end

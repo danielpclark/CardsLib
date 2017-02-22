@@ -3,7 +3,7 @@ module CardsLib
     def initialize(options = {})
       cards = options.fetch(:cards) { Standard::PLAYING_CARDS }
       ranker = options.fetch(:ranker){ Ranker }
-      @seed = options.fetch(:seed)  { Random.new.seed         }
+      @seed = options.fetch(:seed) { Random.new.seed }
       @top = 0
       @cards = cards.map {|c| Card.new(c, ranker) }.shuffle(random: Random.new(@seed)).to_enum
     end

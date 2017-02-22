@@ -9,8 +9,8 @@ Gem::Specification.new do |spec|
   spec.authors       = ["Daniel P. Clark"]
   spec.email         = ["6ftdan@gmail.com"]
 
-  spec.summary       = %q{OO Card Game Library}
-  spec.description   = %q{Card Game Library.  Testable and Object Oriented.}
+  spec.summary       = 'OO Card Game Library'
+  spec.description   = 'Card Game Library.  Testable and Object Oriented.'
   spec.homepage      = "http://github.com/danielpclark/CardsLib"
   spec.license       = "MIT"
 

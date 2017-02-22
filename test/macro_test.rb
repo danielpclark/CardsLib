@@ -23,4 +23,3 @@ describe "Cards Macro" do
       must_be_kind_of CardsLib::Standard::Rankers::BlackjackRanker
   end
 end
-

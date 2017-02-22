@@ -49,25 +49,25 @@ describe "Card" do
   end
 
   it "Knows ranks of cards" do
-    "A23456789TJQK".split('').combination(2).each {|a,b|
+    "A23456789TJQK".split('').combination(2).each do |a, b|
       Card.new("#{a}h").must_be :<, Card.new("#{b}h")
-    }
-    "A23456789TJQK".split('').reverse.combination(2).each {|a,b|
+    end
+    "A23456789TJQK".split('').reverse.combination(2).each do |a, b|
       Card.new("#{a}h").must_be :>, Card.new("#{b}h")
-    }
-    "A23456789TJQK".split('').each {|a|
+    end
+    "A23456789TJQK".split('').each do |a|
       Card.new("#{a}h").must_be :==, Card.new("#{a}h")
-    }
+    end
   end
 
   it "Recognizes sequential ranks" do
-    coupler = ->str{
+    coupler = lambda do |str|
       arr = []
-      str.length.times {|i|
+      str.length.times do |i|
         arr.push(str[i..i+1]) unless i == str.length - 1
-      }
+      end
       arr
-    }
+    end
     coupler.("A23456789TJQKQJT98765432A").each do |pair|
       Card.new("#{pair[0]}h").must_be :sequential?, Card.new("#{pair[1]}h")
     end

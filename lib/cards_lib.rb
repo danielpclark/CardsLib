@@ -8,7 +8,7 @@ require "cards_lib/is_set"
 
 module CardsLib
 
-  # Macro 
+  # Macro
   # Cards[]
   #  generate Card instances from string
   #  representations of their faces

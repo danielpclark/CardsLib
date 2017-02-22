@@ -7,9 +7,9 @@ module CardsLib
         rules.all? {|r| send(r, cards) } && (min..max).include?(cards.count)
       end
 
-      private 
+      private
       def unique(cards)
-        cards.combination(2).all? {|a,b| a != b }
+        cards.combination(2).all? {|a, b| a != b }
       end
 
       using Refinements::InjectWhile
@@ -17,7 +17,7 @@ module CardsLib
       def paired(cards)
         cards.inject_while?(:paired?)
       end
-      
+
       def suited(cards)
         cards.inject_while?(:suited?)
       end

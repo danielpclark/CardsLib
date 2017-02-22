@@ -6,9 +6,9 @@ module CardsLib
       @suit = if_hash_then_fetch(face, :suit)
       @rank = if_hash_then_fetch(face, :rank)
       @face = face_from_rank_and_suit(@rank, @suit) if face.is_a? Hash
-      
+
       @face ||= face
-      @ranker = ranker.new(self.rank)
+      @ranker = ranker.new(rank)
     end
 
     def inspect
@@ -16,7 +16,7 @@ module CardsLib
     end
 
     def face
-      @face   
+      @face
     end
 
     def suit
@@ -32,12 +32,12 @@ module CardsLib
     end
 
     def pair?(other)
-      self.rank == other.rank
+      rank == other.rank
     end
 
     # equal by both rank and suit
     def ==(other)
-      pair?(other) && self.suit == other.suit
+      pair?(other) && suit == other.suit
     end
 
     # equal by value
@@ -52,20 +52,20 @@ module CardsLib
     def sequential?(other)
       @ranker.sequential?(other)
     end
-    
+
     # return other if true
     def paired?(other)
-      (self.rank == other.rank) ? other : nil
+      (rank == other.rank) ? other : nil
     end
 
     # return other if true
     def suited?(other)
-      (self.suit == other.suit) ? other : nil
+      (suit == other.suit) ? other : nil
     end
 
     # returns other if true
     def ordered?(other)
-      self.sequential?(other) ? other : nil
+      sequential?(other) ? other : nil
     end
 
     private

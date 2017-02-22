@@ -6,6 +6,7 @@ gem "codeclimate-test-reporter", group: :test, require: nil
 group :development do
   gem "guard"
   gem "guard-minitest"
+  gem "guard-rubocop"
 end
 
 if Gem::Dependency.new('', "~> 2.4.0").match?('', RUBY_VERSION)

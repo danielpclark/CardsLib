@@ -15,7 +15,7 @@ I'm willing to bet you that there is no other Ruby card game library
 out there as easy to use, as well thought out, and as simple to
 understand as mine. Come on, I dare you to use it and review it! ;-)
 
-##Scope
+## Scope
 
 The scope of this project aims to be a game agnostic card management
 and evaluation system.  Game logic itself will not be provided with
@@ -25,14 +25,14 @@ cards is the sole purpose of this gem.
 Feel free to contribute or raise suggestions via the issue tracker.
 I welcome participation of all kinds! :-)
 
-##Install
+## Install
 
 ```
 gem install 'cards_lib'
 ```
 Requires Ruby 2 or greater.
 
-##Usage
+## Usage
 
 Create a Card with Card.new(face)
 
@@ -64,7 +64,7 @@ CardsLib::IsSet.verify(
 )
 ```
 
-##Goodies
+## Goodies
 
 * **lib/cards_lib/is_set.rb** is a golden tool in card hand verification.
 
@@ -74,7 +74,7 @@ CardsLib::IsSet.verify(
 
 * In **lib/cards_lib/standard/evaluators/blackjack_evaluator.rb** there is a Blackjack hand worth evaluation tool.  See the **test/standard/evaluators/blackjack_evaluator_test.rb** for examples.
 
-##Definitions
+## Definitions
 
 The main difference between **Rules** and **Evaluators** is Rules are purposed
 for exact precedence and exact given matches (eg: two_pair only accepts
@@ -101,9 +101,9 @@ entire hand evaluation where-as Rules are specific scenarios.
 the Cards are first initialized.  Each Card holds its own Ranker
 object.
 
-#Example Usage
+# Example Usage
 
-###High Card
+### High Card
 
 ```ruby
 include CardsLib
@@ -144,11 +144,11 @@ as a simple list from least to greatest value.  If you want to use a Hash (in ca
 of different ranks may be the same value) you may, but you must then also define a Proc for
 lookup.  See [lib/cards_lib/standard/rankers/blackjack_ranker.rb](https://github.com/danielpclark/CardsLib/blob/master/lib/cards_lib/standard/rankers/blackjack_ranker.rb) for an example of how to implement that.
 
-##License
+## License
 
 The MIT License (MIT)
 
-Copyright (c) 2015-2016 by Daniel P. Clark
+Copyright (c) 2015-2017 by Daniel P. Clark
 
 Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the "Software"), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions:
 

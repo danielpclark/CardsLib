@@ -151,4 +151,9 @@ describe "Deck" do
     _(e).must_be :>, d # Q > 7
     _(e.value).must_equal 12
   end
+
+  it "Can make a deck from premade cards" do
+    d = Deck.new cards: [Card.new("Ah")]
+    _(d.pluck).must_equal Card.new("Ah")
+  end
 end

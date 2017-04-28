@@ -5,7 +5,11 @@ module CardsLib
       ranker = options.fetch(:ranker){ Ranker }
       @seed = options.fetch(:seed) { Random.new.seed }
       @top = 0
-      @cards = cards.map {|c| Card.new(c, ranker) }.shuffle(random: Random.new(@seed)).to_enum
+      @cards = if cards.all? {|c| c.is_a? Card }
+                 cards
+               else
+                 cards.map {|c| Card.new(c, ranker) }
+               end.shuffle(random: Random.new(@seed)).to_enum
     end
 
     def inspect

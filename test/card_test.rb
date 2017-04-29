@@ -75,4 +75,14 @@ describe "Card" do
       Card.new("#{pair[0]}h").wont_be :sequential?, Card.new("#{pair[1]}h")
     end
   end
+
+  it "can take spurious data" do
+    # NOTE: You must build custom ranker if you want to take advantage of comparison.
+    rank = :Ferrari
+    suit = {km_h: 300, hp: 380, cc: 4390, cylinder: "V12", kg: 1120}
+    c = Card.new rank: rank, suit: suit
+    _(c.face).must_equal "Ferrari of {:km_h=>300, :hp=>380, :cc=>4390, :cylinder=>\"V12\", :kg=>1120}"
+    _(c.suit).must_equal suit
+    _(c.rank).must_equal rank
+  end
 end
